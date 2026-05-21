@@ -1,0 +1,17 @@
+bedrock:
+  # Claude Haiku 4.5 on Bedrock (cross-region inference endpoint)
+  default_model: us.anthropic.claude-haiku-4-5-20250714-v1:0
+  region: us-east-1
+  profile: null
+  temperature: 0.5
+  max_tokens: 1024
+  request_timeout: 60
+  max_retries: 3
+
+recommender:
+  default_n_factors: 20
+  default_n_epochs: 20
+  default_cf_method: matrix_factorization
+  default_rl_strategy: thompson_sampling
+  default_n_recommendations: 10
+  cf_weight: 0.6
