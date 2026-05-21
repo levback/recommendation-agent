@@ -15,14 +15,18 @@ CLAUDE_HAIKU_4_5 = "us.anthropic.claude-haiku-4-5-20250714-v1:0"
 
 
 def _split_system(messages: list[Message]) -> tuple[str, list[dict]]:
-    """Separate system prompt from user/assistant turns."""
+    """Separate system prompt from user/assistant turns.
+
+    Bedrock Converse API requires content to be a list of content blocks,
+    not a plain string.
+    """
     system = ""
     turns: list[dict] = []
     for m in messages:
         if m.role == "system":
             system = m.content
         else:
-            turns.append({"role": m.role, "content": m.content})
+            turns.append({"role": m.role, "content": [{"text": m.content}]})
     return system, turns
 
 

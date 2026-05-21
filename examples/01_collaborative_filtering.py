@@ -35,7 +35,7 @@ def main() -> None:
         actuals = [r.rating for r in ds.test]
         rmse = ev.rmse(actuals, preds)
         mae = ev.mae(actuals, preds)
-        uid = ds.users[0]
+        uid = sorted({r.user_id for r in ds.train})[0]
         recs = model.recommend(uid, n=10)
         results[name] = {
             "rmse": round(rmse, 4),

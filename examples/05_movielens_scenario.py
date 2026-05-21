@@ -82,7 +82,7 @@ def main() -> None:
         )
     )
     hr.fit(ds.train)
-    uid = ds.users[0]
+    uid = sorted({r.user_id for r in ds.train})[0]
     for round_n in range(10):
         result = hr.recommend(uid, n=5)
         for iid, _ in result.recommendations[:2]:
@@ -110,7 +110,8 @@ def main() -> None:
     # 6. Ranking metrics (precision/recall @10)
     relev = pp.get_relevance_sets(ds.test, threshold=4.0)
     ranking_metrics: dict[str, float] = {}
-    for u in ds.users[:20]:
+    train_users = sorted({r.user_id for r in ds.train})[:20]
+    for u in train_users:
         if u not in relev:
             continue
         r = pipeline.run(u, n=10)

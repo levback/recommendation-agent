@@ -30,7 +30,7 @@ def main() -> None:
 
     hr = HybridRecommender(HybridConfig(n_recommendations=10))
     hr.fit(ds.train)
-    uid = ds.users[0]
+    uid = sorted({r.user_id for r in ds.train})[0]
     result = hr.recommend(uid, n=5)
 
     # Try real Bedrock; fall back to mock

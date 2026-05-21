@@ -33,7 +33,7 @@ def main() -> None:
     for label, cfg in configs:
         hr = HybridRecommender(cfg)
         hr.fit(ds.train)
-        uid = ds.users[0]
+        uid = sorted({r.user_id for r in ds.train})[0]
         result = hr.recommend(uid, n=10)
         preds = [hr._cf.predict(r.user_id, r.item_id) for r in ds.test]
         actuals = [r.rating for r in ds.test]
