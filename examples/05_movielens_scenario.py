@@ -1,7 +1,9 @@
-"""Example 05: Full MovieLens scenario (HuggingFace dataset).
+"""Example 05: Full MovieLens scenario using real HuggingFace data.
 
-Downloads nateraw/movie-lens-latest-small from HuggingFace Hub if available,
-otherwise falls back to synthetic data.
+Downloads ashraq/movielens_ratings (~30 MB, 891k ratings) from HuggingFace Hub.
+The first run downloads and caches to data/datasets/; subsequent runs are instant.
+
+Set MAX_RATINGS to control experiment size (default 50_000 for a fast demo).
 """
 from __future__ import annotations
 
@@ -19,6 +21,9 @@ from src.recommender.evaluator import RecommendationEvaluator
 from src.recommender.hybrid import CFMethod, HybridConfig, HybridRecommender
 from src.recommender.pipeline import PipelineConfig, RecommendationPipeline
 from src.rl.agent import BanditStrategy
+
+# Cap for quick demo — set to None to use all 891k ratings
+MAX_RATINGS = int(os.environ.get("MAX_RATINGS", "50000"))
 
 
 class _MockNarrationLLM(BaseLLM):
@@ -39,25 +44,23 @@ class _MockNarrationLLM(BaseLLM):
 
 
 def main() -> None:
-    print("=== MovieLens Recommendation Scenario ===")
+    print("=== MovieLens Recommendation Scenario (real HuggingFace data) ===")
 
-    # 1. Load dataset
+    # 1. Load dataset (cached after first download)
     loader = DatasetLoader()
-    print("Loading dataset…")
-    try:
-        ratings, items, users = loader.load_huggingface(dataset_name="nateraw/movie-lens-latest-small")
-        print(f"  Loaded {len(ratings)} ratings, {len(items)} movies, {len(users)} users from HuggingFace.")
-    except Exception as exc:
-        print(f"  HuggingFace unavailable ({exc}). Using synthetic data.")
-        ratings, items, users = loader.generate_synthetic(n_users=100, n_items=200, n_ratings=2000, seed=42)
-        print(f"  Generated {len(ratings)} ratings, {len(items)} movies, {len(users)} users.")
+    print(f"Loading dataset (max_ratings={MAX_RATINGS}, min_ratings_per_user=10)…")
+    ratings, items, users = loader.load_huggingface(
+        max_ratings=MAX_RATINGS,
+        min_ratings_per_user=10,
+    )
+    print(f"  {len(ratings):,} ratings | {len(items):,} movies | {len(users):,} users")
 
     items_by_id = {it.item_id: it for it in items}
 
     # 2. Preprocess
     pp = DatasetPreprocessor(test_ratio=0.2, seed=42)
     ds = pp.split(ratings)
-    print(f"  Train: {len(ds.train)}  Test: {len(ds.test)}")
+    print(f"  Train: {len(ds.train):,}  Test: {len(ds.test):,}")
 
     # 3. Evaluate all CF methods
     ev = RecommendationEvaluator()

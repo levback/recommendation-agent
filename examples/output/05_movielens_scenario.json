@@ -1,26 +1,26 @@
 {
   "dataset_stats": {
-    "ratings": 2000,
-    "movies": 200,
-    "users": 100
+    "ratings": 50000,
+    "movies": 5422,
+    "users": 14263
   },
   "cf_metrics": {
     "matrix_factorization": {
-      "rmse": 0.8941,
-      "mae": 0.7258
+      "rmse": 0.9483,
+      "mae": 0.7159
     },
     "user_cf": {
-      "rmse": 1.0371,
-      "mae": 0.8374
+      "rmse": 1.0479,
+      "mae": 0.7982
     },
     "item_cf": {
-      "rmse": 0.9804,
-      "mae": 0.7828
+      "rmse": 1.0536,
+      "mae": 0.7974
     }
   },
   "pipeline_metrics": {
-    "rmse": 0.8941397779035439,
-    "mae": 0.725779134535658
+    "rmse": 0.9483018523609168,
+    "mae": 0.7159042088749326
   },
   "ranking_metrics": {
     "precision@10": 0.0,
@@ -31,56 +31,56 @@
     "user_id": "1",
     "recommendations": [
       {
-        "item_id": "160",
+        "item_id": "6350",
         "score": 0.8,
-        "title": "Movie 160: Animation & Crime"
+        "title": "Whiplash (2013)"
       },
       {
-        "item_id": "78",
-        "score": 0.7846,
-        "title": "Movie 78: Adventure & Western"
+        "item_id": "5378",
+        "score": 0.7595,
+        "title": "Piper (2016)"
       },
       {
-        "item_id": "117",
-        "score": 0.7669,
-        "title": "Movie 117: Fantasy & Western"
+        "item_id": "7453",
+        "score": 0.7546,
+        "title": "Planet Earth II (2016)"
       },
       {
-        "item_id": "23",
-        "score": 0.7522,
-        "title": "Movie 23: Western & Thriller"
+        "item_id": "8386",
+        "score": 0.7477,
+        "title": "Black Mirror"
       },
       {
-        "item_id": "154",
-        "score": 0.737,
-        "title": "Movie 154: Romance & Crime"
+        "item_id": "5873",
+        "score": 0.7454,
+        "title": "Over the Garden Wall (2013)"
       },
       {
-        "item_id": "30",
-        "score": 0.7208,
-        "title": "Movie 30: Fantasy & Mystery"
+        "item_id": "738",
+        "score": 0.7445,
+        "title": "Whiplash (2014)"
       },
       {
-        "item_id": "130",
-        "score": 0.7178,
-        "title": "Movie 130: Fantasy & Horror"
+        "item_id": "12528",
+        "score": 0.7416,
+        "title": "Spider-Man: Into the Spider-Verse (2018)"
       },
       {
-        "item_id": "188",
-        "score": 0.6873,
-        "title": "Movie 188: Western & Documentary"
+        "item_id": "880",
+        "score": 0.7366,
+        "title": "Tale of Princess Kaguya, The (Kaguyahime no monogatari) (2013)"
       },
       {
-        "item_id": "32",
-        "score": 0.6758,
-        "title": "Movie 32: Comedy & Mystery"
+        "item_id": "1943",
+        "score": 0.7344,
+        "title": "The Jinx: The Life and Deaths of Robert Durst (2015)"
       },
       {
-        "item_id": "35",
-        "score": 0.6598,
-        "title": "Movie 35: Horror"
+        "item_id": "5770",
+        "score": 0.7319,
+        "title": "Your Name. (2016)"
       }
     ],
-    "narrative": "Based on your interest in Thriller, Documentary, Action, Horror, we selected 5 items we think you'll enjoy."
+    "narrative": "# Your Personalized Recommendations\n\nWe've curated this mix because you clearly appreciate storytelling that challenges and captivates across different formats\u2014from the intense psychological drama of *Whiplash* to the stunning visual narratives of *Planet Earth II* and the beautifully crafted animation in *Piper* and *Over the Garden Wall*. Each of these picks offers something unique, whether it's gripping character studies, thought-provoking sci-fi concepts, or immersive world-building that'll keep you engaged. You'll find they all share that special quality of leaving a lasting impression, no matter the genre!"
   }
 }
