@@ -1,0 +1,103 @@
+{
+  "pure_bandits": {
+    "epsilon_greedy": {
+      "avg_reward": 0.782,
+      "cumulative_reward": 391.0,
+      "estimated_values": [
+        0.125,
+        0.625,
+        0.8151,
+        0.6,
+        0.3333
+      ]
+    },
+    "ucb": {
+      "avg_reward": 0.636,
+      "cumulative_reward": 318.0,
+      "estimated_values": [
+        0.2778,
+        0.5385,
+        0.7783,
+        0.3696,
+        0.6471
+      ]
+    },
+    "thompson": {
+      "avg_reward": 0.778,
+      "cumulative_reward": 389.0,
+      "estimated_values": [
+        0.3636,
+        0.4286,
+        0.8086,
+        0.2,
+        0.4667
+      ]
+    }
+  },
+  "rl_agent_by_strategy": {
+    "epsilon_greedy": {
+      "top5_items": [
+        "2",
+        "3",
+        "1",
+        "4",
+        "5"
+      ],
+      "top5_scores": [
+        0.5073,
+        0.4848,
+        0.4631,
+        0.0,
+        0.0
+      ]
+    },
+    "ucb": {
+      "top5_items": [
+        "1",
+        "3",
+        "2",
+        "4",
+        "5"
+      ],
+      "top5_scores": [
+        0.5466,
+        0.4763,
+        0.4418,
+        0.0,
+        0.0
+      ]
+    },
+    "thompson_sampling": {
+      "top5_items": [
+        "11",
+        "9",
+        "3",
+        "12",
+        "13"
+      ],
+      "top5_scores": [
+        0.641,
+        0.5745,
+        0.5385,
+        0.5,
+        0.5
+      ]
+    },
+    "linucb": {
+      "top5_items": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "top5_scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  }
+}

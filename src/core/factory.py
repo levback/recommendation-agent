@@ -4,7 +4,7 @@ import os
 from typing import Any
 
 from .base import BaseLLM, LLMConfig
-from .bedrock_client import BedrockClient, CLAUDE_HAIKU_4_5
+from .bedrock_client import BedrockClient, haiku_model_id
 
 
 def create_bedrock_llm(
@@ -17,15 +17,18 @@ def create_bedrock_llm(
 ) -> BedrockClient:
     """Factory: create a BedrockClient for Claude Haiku 4.5.
 
+    The model ID is derived automatically from the region (us./eu./ap. prefix).
+    Pass ``model`` explicitly to override.
+
     AWS credentials are resolved from the environment (standard boto3 chain).
     Never pass credentials as arguments to this function.
     """
+    resolved_region = region or os.environ.get("AWS_DEFAULT_REGION", "eu-central-1")
     config = LLMConfig(
-        model=model or CLAUDE_HAIKU_4_5,
+        model=model or haiku_model_id(resolved_region),
         temperature=temperature,
         max_tokens=max_tokens,
     )
-    resolved_region = region or os.environ.get("AWS_DEFAULT_REGION", "us-east-1")
     return BedrockClient(
         config=config,
         region=resolved_region,

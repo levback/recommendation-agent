@@ -4,7 +4,7 @@ from __future__ import annotations
 import pytest
 
 from src.core.base import BaseLLM, LLMConfig, LLMResponse, Message
-from src.core.bedrock_client import CLAUDE_HAIKU_4_5, BedrockClient
+from src.core.bedrock_client import CLAUDE_HAIKU_4_5, BedrockClient, haiku_model_id
 from src.core.factory import create_bedrock_llm
 
 
@@ -72,7 +72,8 @@ def test_bedrock_client_default_model(monkeypatch):
 
     monkeypatch.setattr(boto3, "Session", lambda **kw: _FakeSession())
     bc = BedrockClient()
-    assert bc.config.model == CLAUDE_HAIKU_4_5
+    # Default region is eu-central-1 → eu. prefix
+    assert bc.config.model == haiku_model_id("eu-central-1")
 
 
 def test_bedrock_client_custom_model(monkeypatch):
@@ -98,9 +99,11 @@ def test_create_bedrock_llm_defaults(monkeypatch):
             return object()
 
     monkeypatch.setattr(boto3, "Session", lambda **kw: _FakeSession())
+    monkeypatch.delenv("AWS_DEFAULT_REGION", raising=False)
     bc = create_bedrock_llm()
     assert isinstance(bc, BedrockClient)
-    assert bc.config.model == CLAUDE_HAIKU_4_5
+    # Default region is eu-central-1, so model ID must use the eu. prefix
+    assert bc.config.model == "eu.anthropic.claude-haiku-4-5-20251001-v1:0"
 
 
 def test_create_bedrock_llm_custom_model(monkeypatch):

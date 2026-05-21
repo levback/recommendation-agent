@@ -1,0 +1,86 @@
+{
+  "dataset_stats": {
+    "ratings": 2000,
+    "movies": 200,
+    "users": 100
+  },
+  "cf_metrics": {
+    "matrix_factorization": {
+      "rmse": 0.8941,
+      "mae": 0.7258
+    },
+    "user_cf": {
+      "rmse": 1.0371,
+      "mae": 0.8374
+    },
+    "item_cf": {
+      "rmse": 0.9804,
+      "mae": 0.7828
+    }
+  },
+  "pipeline_metrics": {
+    "rmse": 0.8941397779035439,
+    "mae": 0.725779134535658
+  },
+  "ranking_metrics": {
+    "precision@10": 0.0,
+    "recall@10": 0.0,
+    "ndcg@10": 0.0
+  },
+  "sample_recommendations": {
+    "user_id": "1",
+    "recommendations": [
+      {
+        "item_id": "160",
+        "score": 0.8,
+        "title": "Movie 160: Animation & Crime"
+      },
+      {
+        "item_id": "78",
+        "score": 0.7846,
+        "title": "Movie 78: Adventure & Western"
+      },
+      {
+        "item_id": "117",
+        "score": 0.7669,
+        "title": "Movie 117: Fantasy & Western"
+      },
+      {
+        "item_id": "23",
+        "score": 0.7522,
+        "title": "Movie 23: Western & Thriller"
+      },
+      {
+        "item_id": "154",
+        "score": 0.737,
+        "title": "Movie 154: Romance & Crime"
+      },
+      {
+        "item_id": "30",
+        "score": 0.7208,
+        "title": "Movie 30: Fantasy & Mystery"
+      },
+      {
+        "item_id": "130",
+        "score": 0.7178,
+        "title": "Movie 130: Fantasy & Horror"
+      },
+      {
+        "item_id": "188",
+        "score": 0.6873,
+        "title": "Movie 188: Western & Documentary"
+      },
+      {
+        "item_id": "32",
+        "score": 0.6758,
+        "title": "Movie 32: Comedy & Mystery"
+      },
+      {
+        "item_id": "35",
+        "score": 0.6598,
+        "title": "Movie 35: Horror"
+      }
+    ],
+    "narrative": "Based on your interest in Thriller, Documentary, Action, Horror, we selected 5 items we think you'll enjoy."
+  }
+}

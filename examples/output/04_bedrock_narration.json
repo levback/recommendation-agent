@@ -1,0 +1,27 @@
+{
+  "user_id": "1",
+  "recommendations": [
+    {
+      "item_id": "2",
+      "score": 0.8
+    },
+    {
+      "item_id": "26",
+      "score": 0.7376
+    },
+    {
+      "item_id": "10",
+      "score": 0.7201
+    },
+    {
+      "item_id": "57",
+      "score": 0.7184
+    },
+    {
+      "item_id": "20",
+      "score": 0.7058
+    }
+  ],
+  "narrative": "# Your Personalized Recommendations\n\nWe've curated this mix specifically for you because you love exploring different genres and moods! You'll find everything from animated comedies that blend humor with thrilling moments, to fantasy adventures and action-packed documentaries that keep things fresh and exciting. Whether you're in the mood for something light and funny, emotionally engaging, or action-packed, there's something here to match whatever you're craving today!",
+  "model": "eu.anthropic.claude-haiku-4-5-20251001-v1:0"
+}

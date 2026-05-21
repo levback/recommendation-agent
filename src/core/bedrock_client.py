@@ -10,8 +10,31 @@ from .base import BaseLLM, LLMConfig, LLMResponse, Message
 
 logger = logging.getLogger(__name__)
 
-# Claude Haiku 4.5 on Bedrock — cross-region inference endpoint
-CLAUDE_HAIKU_4_5 = "us.anthropic.claude-haiku-4-5-20250714-v1:0"
+# Claude Haiku 4.5 base ID (without cross-region prefix)
+_HAIKU_4_5_BASE = "anthropic.claude-haiku-4-5-20251001-v1:0"
+
+# Default (kept for backwards compatibility — resolves to us. prefix)
+CLAUDE_HAIKU_4_5 = "us.anthropic.claude-haiku-4-5-20251001-v1:0"
+
+# Region-prefix map for cross-region inference profiles
+_REGION_PREFIX: dict[str, str] = {
+    "us": "us",
+    "eu": "eu",
+    "ap": "ap",
+}
+
+
+def haiku_model_id(region: str) -> str:
+    """Return the correct cross-region inference profile ID for the given region.
+
+    Examples:
+        haiku_model_id("eu-central-1")  -> "eu.anthropic.claude-haiku-4-5-20251001-v1:0"
+        haiku_model_id("us-east-1")     -> "us.anthropic.claude-haiku-4-5-20251001-v1:0"
+        haiku_model_id("ap-northeast-1") -> "ap.anthropic.claude-haiku-4-5-20251001-v1:0"
+    """
+    geo = region.split("-")[0]  # "eu", "us", "ap", ...
+    prefix = _REGION_PREFIX.get(geo, geo)
+    return f"{prefix}.{_HAIKU_4_5_BASE}"
 
 
 def _split_system(messages: list[Message]) -> tuple[str, list[dict]]:
@@ -41,12 +64,12 @@ class BedrockClient(BaseLLM):
     def __init__(
         self,
         config: LLMConfig | None = None,
-        region: str = "us-east-1",
+        region: str = "eu-central-1",
         profile: str | None = None,
         role_arn: str | None = None,
     ) -> None:
         if config is None:
-            config = LLMConfig(model=CLAUDE_HAIKU_4_5)
+            config = LLMConfig(model=haiku_model_id(region))
         super().__init__(config)
         self._client = self._build_client(region, profile, role_arn)
 

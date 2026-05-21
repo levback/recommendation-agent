@@ -1,0 +1,140 @@
+{
+  "mf_thompson_60_40": {
+    "rmse": 0.897,
+    "top10": [
+      {
+        "item_id": "77",
+        "score": 0.8
+      },
+      {
+        "item_id": "93",
+        "score": 0.7558
+      },
+      {
+        "item_id": "13",
+        "score": 0.7515
+      },
+      {
+        "item_id": "58",
+        "score": 0.6832
+      },
+      {
+        "item_id": "82",
+        "score": 0.6556
+      },
+      {
+        "item_id": "32",
+        "score": 0.6548
+      },
+      {
+        "item_id": "22",
+        "score": 0.6226
+      },
+      {
+        "item_id": "9",
+        "score": 0.595
+      },
+      {
+        "item_id": "17",
+        "score": 0.591
+      },
+      {
+        "item_id": "2",
+        "score": 0.5886
+      }
+    ],
+    "method": "hybrid(matrix_factorization+thompson_sampling)"
+  },
+  "user_cf_ucb_70_30": {
+    "rmse": 1.0518,
+    "top10": [
+      {
+        "item_id": "97",
+        "score": 0.85
+      },
+      {
+        "item_id": "93",
+        "score": 0.8453
+      },
+      {
+        "item_id": "59",
+        "score": 0.738
+      },
+      {
+        "item_id": "17",
+        "score": 0.6926
+      },
+      {
+        "item_id": "77",
+        "score": 0.6857
+      },
+      {
+        "item_id": "27",
+        "score": 0.6742
+      },
+      {
+        "item_id": "58",
+        "score": 0.6736
+      },
+      {
+        "item_id": "2",
+        "score": 0.6626
+      },
+      {
+        "item_id": "67",
+        "score": 0.6573
+      },
+      {
+        "item_id": "65",
+        "score": 0.654
+      }
+    ],
+    "method": "hybrid(user_cf+ucb)"
+  },
+  "item_cf_no_rl": {
+    "rmse": 1.0557,
+    "top10": [
+      {
+        "item_id": "19",
+        "score": 0.8
+      },
+      {
+        "item_id": "43",
+        "score": 0.8
+      },
+      {
+        "item_id": "81",
+        "score": 0.7172
+      },
+      {
+        "item_id": "16",
+        "score": 0.7172
+      },
+      {
+        "item_id": "20",
+        "score": 0.7172
+      },
+      {
+        "item_id": "73",
+        "score": 0.6966
+      },
+      {
+        "item_id": "72",
+        "score": 0.6966
+      },
+      {
+        "item_id": "49",
+        "score": 0.6882
+      },
+      {
+        "item_id": "23",
+        "score": 0.6759
+      },
+      {
+        "item_id": "56",
+        "score": 0.6759
+      }
+    ],
+    "method": "hybrid(item_cf+thompson_sampling)"
+  }
+}

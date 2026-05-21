@@ -1,7 +1,8 @@
 bedrock:
-  # Claude Haiku 4.5 on Bedrock (cross-region inference endpoint)
-  default_model: us.anthropic.claude-haiku-4-5-20250714-v1:0
-  region: us-east-1
+  # Claude Haiku 4.5 cross-region inference — prefix matches region (us./eu./ap.)
+  # Override with AWS_DEFAULT_REGION env var or the --region flag
+  default_model: eu.anthropic.claude-haiku-4-5-20251001-v1:0
+  region: eu-central-1
   profile: null
   temperature: 0.5
   max_tokens: 1024
