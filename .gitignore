@@ -13,6 +13,7 @@ logs/
 *.log
 data/datasets/*.csv
 data/datasets/*.json
+data/datasets/*.pkl
 data/models/*.pt
 data/models/*.pkl
 .env
